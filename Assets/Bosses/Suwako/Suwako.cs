@@ -8,6 +8,10 @@ public class Suwako : MonoBehaviour {
 	float timer = 0;
 	int phase = 0;
 
+	// phase 1 stuff
+	float rotation = 0;
+	float rateofchange = 0;
+
 	// prefab references
 	public Transform suwabullet;
 
@@ -22,12 +26,24 @@ public class Suwako : MonoBehaviour {
 
 		if(phase == 0)
 		{
-			if(timer > 2)
+			if(timer > 0.6)
 			{
+				rotation += rateofchange;
+				rateofchange += Random.value * 2 - 1;
 				timer = 0;
-				Transform b = Instantiate(suwabullet);
-				b.position = transform.position;
+				for(int i = 0; i < 36; i++)
+				{
+					Transform b = Instantiate(suwabullet);
+					Bullet bs = b.GetComponent<Bullet>();
+					b.position = transform.position;
+					bs.setDirection(i*10 + rotation);
+				}
 			}
 		}
+	}
+
+	void BossDead()
+	{
+		phase = 1;
 	}
 }

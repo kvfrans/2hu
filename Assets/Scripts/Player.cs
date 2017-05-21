@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	public float bounds = 3;
 	public float timer = 0.0f;
 	public float fireSpeedIncrement = 0.02f;
+	public float lives = 3;
 
 	public Vector2 direction_vector;
 
@@ -120,7 +121,11 @@ public class Player : MonoBehaviour {
 
 		Transform b = Instantiate(bomb);
 		b.position = transform.position;
+	}
 
+	void onHit(){
+		//clears bullets and respawns
+		transform.position = new Vector2(-2,0);
 	}
 
 	void move(dir direction) {
@@ -161,7 +166,8 @@ public class Player : MonoBehaviour {
         	{
         		b.HitPlayer();
 				graze--;
-        		// do stuff that happens when you're hit
+				lives--;
+				onHit();
         	}
         }
 
