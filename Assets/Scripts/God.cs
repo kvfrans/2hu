@@ -16,8 +16,8 @@ public class God : MonoBehaviour {
 		p.position = new Vector2(0,0);
 
 		Transform b = Instantiate(boss1);
-		b.position = new Vector2(0,50);
-		b.GetComponent<Boss>().
+		b.position = new Vector2(0,3);
+		b.GetComponent<Boss>().player = p;
 	}
 
 	// Update is called once per frame

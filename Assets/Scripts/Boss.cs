@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour {
 
+	// real references
 	public Transform player; // player postion
+
+	//Script References
+	Player p;
+
+	// boss variables
 	public int startingHealth = 100;
 	public int currentHealth;
 	bool isDead;
@@ -12,7 +18,8 @@ public class Boss : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindWithTag("Player").transform;
+		p = player.GetComponent<Player>();
+		// player.position
 		currentHealth = startingHealth;
 
 	}
