@@ -3,14 +3,13 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public enum dir { UP, DOWN, LEFT, RIGHT };
-
 	public float speed = 4;
 	public bool shift = false;
 	public int numOfDirections = 0;
 
 	public Vector2 direction_vector;
 
+	enum dir { UP, DOWN, LEFT, RIGHT };
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +45,13 @@ public class Player : MonoBehaviour {
 	}
 
 	void checkAlive() {
+
+		if (Input.GetKey("up")) move(dir.UP);
+		else if (Input.GetKey("down")) move(dir.DOWN);
+		if (Input.GetKey("left")) move(dir.LEFT);
+		else if (Input.GetKey("right")) move(dir.RIGHT);
+
+		// move();
 
 	}
 
@@ -83,12 +89,14 @@ public class Player : MonoBehaviour {
 
 	void move(dir direction) {
 
+
 		if(shift) speed = 2;
 		else speed = 4;
 		if(numOfDirections==2) speed * Math.Sqrt(2);
 
 
 		//moving
+
 		if(direction == dir.UP) {
 			direction_vector = new Vector2(0, 1);
 			transform.Translate(direction_vector*speed*Time.deltaTime);
@@ -105,9 +113,6 @@ public class Player : MonoBehaviour {
 			direction_vector = new Vector2(1, 0);
 			transform.Translate(direction_vector*speed*Time.deltaTime);
 		}
-
-		if(Input.GetKeyUp("left shift")) shift = false;
-		Debug.Log(shift);
 
 	}
 

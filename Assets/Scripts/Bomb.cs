@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour {
 
-	private int x, y;
-
 	// Use this for initialization
 
 	void Start () {
