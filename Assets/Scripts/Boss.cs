@@ -49,6 +49,7 @@ public class Boss : MonoBehaviour {
     {
 		// can trigger some cutscenes here, animations, etc
         isDead = true;
+        gameObject.SendMessage("BossDead");
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {

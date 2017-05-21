@@ -41,4 +41,9 @@ public class Suwako : MonoBehaviour {
 			}
 		}
 	}
+
+	void BossDead()
+	{
+		phase = 1;
+	}
 }
