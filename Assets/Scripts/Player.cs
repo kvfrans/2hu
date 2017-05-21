@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 	public float speed = 4;
 	public bool shift = false;
 	public int numOfDirections = 0;
+	public float bounds = 3;
 
 	public Vector2 direction_vector;
 
@@ -25,22 +26,18 @@ public class Player : MonoBehaviour {
 		if (Input.GetKeyDown("left shift")) {
 			shift = true;
 		}
-		if (Input.GetKey("up")) {
-			numOfDirections++;
-			move(dir.UP);
-		}
-		else if (Input.GetKey("down")) {
-			numOfDirections++;
-			move(dir.DOWN);
-		}
-		if (Input.GetKey("left")) {
-			numOfDirections++;
-			move(dir.LEFT);
-		}
-		else if (Input.GetKey("right")) {
-			numOfDirections++;
-			move(dir.RIGHT);
-		}
+
+		//checks directions
+		if (Input.GetKey("up")) { numOfDirections++; }
+		else if (Input.GetKey("down")) { numOfDirections++; }
+		if (Input.GetKey("left")) { numOfDirections++; }
+		else if (Input.GetKey("right")) { numOfDirections++; }
+
+		//moves
+		if (Input.GetKey("up")) { move(dir.UP); }
+		else if (Input.GetKey("down")) { move(dir.DOWN); }
+		if (Input.GetKey("left")) { move(dir.LEFT); }
+		else if (Input.GetKey("right")) { move(dir.RIGHT); }
 
 	}
 
@@ -51,50 +48,45 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey("left")) move(dir.LEFT);
 		else if (Input.GetKey("right")) move(dir.RIGHT);
 
-		// move();
-
 	}
 
-	void canMove(){
+	void checkBounds(){
 		//checking if outside bounds
-		if(transform.position.x >= 500) {
 
-			transform.position = new Vector2(500, transform.position.y);
+		Debug.Log(transform.position.x + ", " + transform.position.y);
+
+		if(transform.position.x >= 3.0) {
+
+			transform.position = new Vector2(3.0f, transform.position.y);
 
 			Debug.Log("edge");
-			return;
 		}
-		else if(transform.position.x <= 0) {
+		else if(transform.position.x <= -3.0) {
 
-			transform.position = new Vector2(0, transform.position.y);
+			transform.position = new Vector2(-3.0f, transform.position.y);
 
 			Debug.Log("edge");
-			return;
 		}
-		if(transform.position.x >= 500) {
+		if(transform.position.y >= 3.0) {
 
-			transform.position = new Vector2(transform.position.x, 500);
+			transform.position = new Vector2(transform.position.x, 3.0f);
 
 			Debug.Log("edge");
-			return;
 		}
-		else if(transform.position.x <= 0) {
+		else if(transform.position.y <= -3.0) {
 
-			transform.position = new Vector2(transform.position.x, 0);
+			transform.position = new Vector2(transform.position.x, -3.0f);
 
 			Debug.Log("edge");
-			return;
 		}
 	}
 
 	void move(dir direction) {
 
-
 		if(shift) speed = 2;
 		else speed = 4;
 		if(numOfDirections==2) speed *= 0.6f;
 
-		Debug.Log(speed);
 		//moving
 
 		if(direction == dir.UP) {
@@ -113,6 +105,9 @@ public class Player : MonoBehaviour {
 			direction_vector = new Vector2(1, 0);
 			transform.Translate(direction_vector*speed*Time.deltaTime);
 		}
+
+		checkBounds();
+
 
 	}
 
