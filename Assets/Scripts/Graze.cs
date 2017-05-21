@@ -20,7 +20,7 @@ public class Graze : MonoBehaviour {
         {
         	if(b.type == Bullet.bullet_type.ENEMY)
         	{
-				Debug.Log("assme");
+				// Debug.Log("Graze");
         		// do stuff that happens when you're hit
         	}
         }
