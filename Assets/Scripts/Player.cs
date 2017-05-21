@@ -5,10 +5,13 @@ public class Player : MonoBehaviour {
 
 	public float speed = 4;
 	public bool shift = false;
+	public bool fire = false;
 	public int numOfDirections = 0;
 	public float bounds = 3;
 
 	public Vector2 direction_vector;
+
+	public Transform playerbullet;
 
 	enum dir { UP, DOWN, LEFT, RIGHT };
 
@@ -28,6 +31,12 @@ public class Player : MonoBehaviour {
 		}
 
 		//checks directions
+
+		if (Input.GetKeyDown("z")) { fire = true; }
+		if (Input.GetKeyUp("z")) { fire = false; }
+
+		if (fire) shoot();
+
 		if (Input.GetKey("up")) { numOfDirections++; }
 		else if (Input.GetKey("down")) { numOfDirections++; }
 		if (Input.GetKey("left")) { numOfDirections++; }
@@ -79,6 +88,13 @@ public class Player : MonoBehaviour {
 
 			// Debug.Log("edge");
 		}
+	}
+
+	void shoot(){
+
+		Transform b = Instantiate(playerbullet);
+		b.position = transform.position;
+
 	}
 
 	void move(dir direction) {
