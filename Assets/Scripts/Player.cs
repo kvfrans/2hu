@@ -59,4 +59,16 @@ public class Player : MonoBehaviour {
 
 	}
 
+	void OnTriggerEnter2D(Collider2D other) {
+        Bullet b = other.gameObject.GetComponent<Bullet>();
+        if(b != null)
+        {
+        	if(b.type == Bullet.bullet_type.ENEMY)
+        	{
+        		b.HitPlayer();
+        		// do stuff that happens when you're hit
+        	}
+        }
+    }
+
 }
