@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class God : MonoBehaviour {
 
@@ -13,20 +14,38 @@ public class God : MonoBehaviour {
 	public Transform score_text;
 	public Transform graze_text;
 	public Transform life_text;
+	public Transform boss_health;
+
+	// Real references
+	Transform player_tr;
+	Transform boss_tr;
+
+	// Script references
+	Player player_script;
+	Boss boss_script;
 
 	// Use this for initialization
 	void Start () {
-		Transform p = Instantiate(player);
-		p.position = new Vector2(-2,0);
-		Debug.Log(p.GetComponent<Player>());
+		player_tr = Instantiate(player);
+		player_tr.position = new Vector2(-2,0);
+		player_script = player_tr.GetComponent<Player>();
 
-		Transform b = Instantiate(boss1);
-		b.position = new Vector2(-2,3);
-		b.GetComponent<Boss>().player = p;
+		Transform boss_tr = Instantiate(boss1);
+		boss_tr.position = new Vector2(-2,3);
+		boss_script = boss_tr.GetComponent<Boss>();
+		boss_script.player = player_tr;
 	}
 
 	// Update is called once per frame
 	void Update () {
+		updateGUI();
+	}
 
+	void updateGUI()
+	{
+		score_text.GetComponent<Text>().text = "Score: " + 0;
+		graze_text.GetComponent<Text>().text = "Graze: " + player_script.graze;
+		life_text.GetComponent<Text>().text = "Life: " + 0;
+		boss_health.localScale = new Vector2(1, (boss_script.currentHealth * 15.0f) / boss_script.startingHealth);
 	}
 }
