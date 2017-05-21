@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 	public Vector2 direction_vector;
 
 	public Transform playerbullet;
+	public Transform bomb;
 
 	enum dir { UP, DOWN, LEFT, RIGHT };
 
@@ -43,8 +44,9 @@ public class Player : MonoBehaviour {
 
 		if (Input.GetKeyDown("z")) { fire = true; }
 		if (Input.GetKeyUp("z")) { fire = false; }
-
 		if (fire) shoot();
+
+		if(Input.GetKey("x")) { makeBomb(); }
 
 		if (Input.GetKey("up")) { numOfDirections++; }
 		else if (Input.GetKey("down")) { numOfDirections++; }
@@ -114,6 +116,13 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	void makeBomb(){
+
+		Transform b = Instantiate(bomb);
+		b.position = transform.position;
+
+	}
+
 	void move(dir direction) {
 
 		if(shift) speed = 2;
@@ -155,6 +164,7 @@ public class Player : MonoBehaviour {
         		// do stuff that happens when you're hit
         	}
         }
+
     }
 
 }

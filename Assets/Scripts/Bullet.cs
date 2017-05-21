@@ -46,6 +46,15 @@ public class Bullet : MonoBehaviour {
 		}
 	}
 
+	public void HitBomb()
+	{
+		if(destroy_on_hit)
+		{
+			Destroy(gameObject);
+		}
+	}
+
+
 	public void HitEnemy() {
 		Destroy(gameObject);
 	}
