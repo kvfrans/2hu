@@ -35,6 +35,9 @@ public class Player : MonoBehaviour {
 		if (Input.GetKeyDown("left shift")) {
 			shift = true;
 		}
+		if (Input.GetKeyUp("left shift")) {
+			shift = false;
+		}
 
 		//checks directions
 
