@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 	public bool fire = false;
 	public int numOfDirections = 0;
 	public float bounds = 3;
+	public float timer = 0.0f;
+	public float fireSpeedIncrement = 0.02f;
 
 	public Vector2 direction_vector;
 
@@ -18,7 +20,6 @@ public class Player : MonoBehaviour {
 	public float score = 0;
 	public float graze = 0;
 
-	public float timer = 0.0f;
 
 	// Use this for initialization
 	void Start () {
