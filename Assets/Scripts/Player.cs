@@ -53,31 +53,31 @@ public class Player : MonoBehaviour {
 	void checkBounds(){
 		//checking if outside bounds
 
-		Debug.Log(transform.position.x + ", " + transform.position.y);
+		// Debug.Log(transform.position.x + ", " + transform.position.y);
 
 		if(transform.position.x >= 3.0) {
 
 			transform.position = new Vector2(3.0f, transform.position.y);
 
-			Debug.Log("edge");
+			// Debug.Log("edge");
 		}
 		else if(transform.position.x <= -3.0) {
 
 			transform.position = new Vector2(-3.0f, transform.position.y);
 
-			Debug.Log("edge");
+			// Debug.Log("edge");
 		}
 		if(transform.position.y >= 3.0) {
 
 			transform.position = new Vector2(transform.position.x, 3.0f);
 
-			Debug.Log("edge");
+			// Debug.Log("edge");
 		}
 		else if(transform.position.y <= -3.0) {
 
 			transform.position = new Vector2(transform.position.x, -3.0f);
 
-			Debug.Log("edge");
+			// Debug.Log("edge");
 		}
 	}
 
