@@ -51,7 +51,7 @@ public class Player : MonoBehaviour {
 			direction_vector = new Vector2(0, -1);
 			transform.Translate(direction_vector*speed*Time.deltaTime);
 		}
-		if(direction == dir.LEFT) {			
+		if(direction == dir.LEFT) {
 			direction_vector = new Vector2(-1, 0);
 			transform.Translate(direction_vector*speed*Time.deltaTime);
 		}
