@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour {
 
-	Transform player; // player postion
+	public Transform player; // player postion
 	public int startingHealth = 100;
 	public int currentHealth;
 	bool isDead;
