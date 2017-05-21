@@ -94,9 +94,6 @@ public class Player : MonoBehaviour {
 		else speed = 4;
 		if(numOfDirections==2) speed *= 0.6f;
 
-		Debug.Log(speed);
-		//moving
-
 		if(direction == dir.UP) {
 			direction_vector = new Vector2(0, 1);
 			transform.Translate(direction_vector*speed*Time.deltaTime);
