@@ -6,16 +6,14 @@ public class Bomb : MonoBehaviour {
 
 	private int x, y;
 
-
 	// Use this for initialization
 
-	void Start (Player player) {
-		player.getX();
-		player.getY();
+	void Start () {
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 }

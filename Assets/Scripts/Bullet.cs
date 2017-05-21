@@ -11,19 +11,19 @@ public class Bullet : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		direction_vector = new Vector2(1,0);
+		direction_vector = new Vector2(Mathf.Cos(direction * Mathf.Deg2Rad), Mathf.Sin(direction * Mathf.Deg2Rad));
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-
+		transform.Translate(direction_vector*speed*0.01f);
 	}
 
 	public void setDirection(float dir)
 	{
 		direction = dir;
-		direction_vector = new Vector(Mathf.Cos(dir * Mathf.Deg2Rad), Mathf.Sin(dir * Mathf.Deg2Rad))
+		direction_vector = new Vector2(Mathf.Cos(dir * Mathf.Deg2Rad), Mathf.Sin(dir * Mathf.Deg2Rad));
 	}
 
 }
