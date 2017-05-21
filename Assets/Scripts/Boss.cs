@@ -29,9 +29,9 @@ public class Boss : MonoBehaviour {
 		//prob shoot some bullets at the player
 
 	}
-
-	public void TakeDamage (int amount, Vector3 hitPoint) {
-		//do some animation in regards to where boss is hit
+	public void TakeDamage (int amount) {
+	// public void TakeDamage (int amount, Vector2 hitPoint) {
+		//do some animation in regards to where boss is hit maybe
 
 		if(isDead)
 		   // ... no need to take damage so exit the function.
@@ -49,5 +49,17 @@ public class Boss : MonoBehaviour {
     {
 		// can trigger some cutscenes here, animations, etc
         isDead = true;
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		Bullet b = other.gameObject.GetComponent<Bullet>();
+		if(b != null)
+		{
+			if(b.type == Bullet.bullet_type.PLAYER)
+			{
+				b.HitEnemy();
+				TakeDamage(2);
+			}
+		}
 	}
 }
