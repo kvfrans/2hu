@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour {
 	public float direction = 0;
 	public bullet_type type = bullet_type.ENEMY;
 	public bool destroy_on_hit = true;
+	public bool grazed = false;
 
 	// private use variables
 	private Vector2 direction_vector;
@@ -45,4 +46,7 @@ public class Bullet : MonoBehaviour {
 		Destroy(gameObject);
 	}
 
+	public void grazedPlayer() {
+		grazed = true;
+	}
 }

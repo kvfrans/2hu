@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Graze : MonoBehaviour {
 
+	public Transform player;
+
 	// Use this for initialization
 	void Start () {
 
@@ -18,10 +20,12 @@ public class Graze : MonoBehaviour {
         Bullet b = other.gameObject.GetComponent<Bullet>();
         if(b != null)
         {
-        	if(b.type == Bullet.bullet_type.ENEMY)
+        	if(b.type == Bullet.bullet_type.ENEMY && !b.grazed)
         	{
-				// Debug.Log("Graze");
-        		// do stuff that happens when you're hit
+				player.GetComponent<Player>().graze++;
+				b.grazedPlayer();
+        		// do stuff that happens when you're hit like update graze count
+
         	}
         }
     }
