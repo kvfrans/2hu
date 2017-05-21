@@ -92,9 +92,9 @@ public class Player : MonoBehaviour {
 
 		if(shift) speed = 2;
 		else speed = 4;
-		if(numOfDirections==2) speed * Math.Sqrt(2);
+		if(numOfDirections==2) speed *= 0.6f;
 
-
+		Debug.Log(speed);
 		//moving
 
 		if(direction == dir.UP) {
