@@ -18,7 +18,6 @@ public class God : MonoBehaviour {
 	void Start () {
 		Transform p = Instantiate(player);
 		p.position = new Vector2(-2,0);
-		Debug.Log(p.GetComponent<Player>());
 
 		Transform b = Instantiate(boss1);
 		b.position = new Vector2(-2,3);

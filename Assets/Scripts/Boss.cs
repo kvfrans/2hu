@@ -55,7 +55,7 @@ public class Boss : MonoBehaviour {
 		Bullet b = other.gameObject.GetComponent<Bullet>();
 		if(b != null)
 		{
-			if(b.type == Bullet.bullet_type.PLAYER)
+			if(b.type == Bullet.bullet_type.PLAYER && !isDead)
 			{
 				b.HitEnemy();
 				TakeDamage(2);
