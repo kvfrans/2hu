@@ -55,27 +55,27 @@ public class Player : MonoBehaviour {
 
 		// Debug.Log(transform.position.x + ", " + transform.position.y);
 
-		if(transform.position.x >= 3.0) {
+		if(transform.position.x >= 1.94) {
 
-			transform.position = new Vector2(3.0f, transform.position.y);
-
-			// Debug.Log("edge");
-		}
-		else if(transform.position.x <= -3.0) {
-
-			transform.position = new Vector2(-3.0f, transform.position.y);
+			transform.position = new Vector2(1.94f, transform.position.y);
 
 			// Debug.Log("edge");
 		}
-		if(transform.position.y >= 3.0) {
+		else if(transform.position.x <= -6.2) {
 
-			transform.position = new Vector2(transform.position.x, 3.0f);
+			transform.position = new Vector2(-6.2f, transform.position.y);
 
 			// Debug.Log("edge");
 		}
-		else if(transform.position.y <= -3.0) {
+		if(transform.position.y >= 4.44) {
 
-			transform.position = new Vector2(transform.position.x, -3.0f);
+			transform.position = new Vector2(transform.position.x, 4.44f);
+
+			// Debug.Log("edge");
+		}
+		else if(transform.position.y <= -4.4) {
+
+			transform.position = new Vector2(transform.position.x, -4.4f);
 
 			// Debug.Log("edge");
 		}

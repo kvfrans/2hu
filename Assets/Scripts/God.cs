@@ -13,10 +13,10 @@ public class God : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Transform p = Instantiate(player);
-		p.position = new Vector2(0,0);
+		p.position = new Vector2(-2,0);
 
 		Transform b = Instantiate(boss1);
-		b.position = new Vector2(0,3);
+		b.position = new Vector2(-2,3);
 		b.GetComponent<Boss>().player = p;
 	}
 
