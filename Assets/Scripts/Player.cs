@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
 	public float score = 0;
 	public float graze = 0;
 
+	public float timer = 0.0f;
+
 	// Use this for initialization
 	void Start () {
 
@@ -95,9 +97,17 @@ public class Player : MonoBehaviour {
 
 	void shoot(){
 
-		Transform b = Instantiate(playerbullet);
-		b.position = transform.position;
+		timer += Time.deltaTime;
 
+		if(timer > 0.2f) {
+			timer = 0;
+
+			Transform b = Instantiate(playerbullet);
+			Transform b2 = Instantiate(playerbullet);
+
+			b.position = new Vector2(transform.position.x - 0.1f, transform.position.y);
+			b2.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
+		}
 	}
 
 	void move(dir direction) {

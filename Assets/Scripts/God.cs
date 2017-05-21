@@ -46,6 +46,6 @@ public class God : MonoBehaviour {
 		score_text.GetComponent<Text>().text = "Score: " + 0;
 		graze_text.GetComponent<Text>().text = "Graze: " + player_script.graze;
 		life_text.GetComponent<Text>().text = "Life: " + 0;
-		boss_health.localScale = new Vector2(1, (boss_script.currentHealth * 15.0f) / boss_script.startingHealth);
+		boss_health.localScale = new Vector2((boss_script.currentHealth * 15.0f) / boss_script.startingHealth, 1);
 	}
 }

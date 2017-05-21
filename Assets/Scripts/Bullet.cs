@@ -28,6 +28,10 @@ public class Bullet : MonoBehaviour {
 		transform.Translate(direction_vector*speed*Time.deltaTime);
 	}
 
+	void OnBecameInvisible() {
+         Destroy(gameObject);
+     }
+
 	public void setDirection(float dir)
 	{
 		direction = dir;
