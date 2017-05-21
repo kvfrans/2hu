@@ -12,6 +12,9 @@ public class Player : MonoBehaviour {
 
 	enum dir { UP, DOWN, LEFT, RIGHT };
 
+	public float score = 0;
+	public float graze = 0;
+
 	// Use this for initialization
 	void Start () {
 
@@ -118,6 +121,7 @@ public class Player : MonoBehaviour {
         	if(b.type == Bullet.bullet_type.ENEMY)
         	{
         		b.HitPlayer();
+				graze--;
         		// do stuff that happens when you're hit
         	}
         }
