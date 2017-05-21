@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class Bullet : MonoBehaviour {
@@ -25,6 +25,5 @@ public class Bullet : MonoBehaviour {
 		direction = dir;
 		direction_vector = new Vector(Mathf.Cos(dir * Mathf.Deg2Rad), Mathf.Sin(dir * Mathf.Deg2Rad))
 	}
-
 
 }
