@@ -7,13 +7,17 @@ public class Bomb : MonoBehaviour {
 	// Use this for initialization
 
 	void Start () {
+		StartCoroutine(delete());
+	}
 
+	IEnumerator delete()
+	{
+		yield return new WaitForSeconds(0.1f);
+		Destroy(gameObject);
 	}
 
 	// Update is called once per frame
 	void Update () {
-
-
 
 	}
 

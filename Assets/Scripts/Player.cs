@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
 		if (Input.GetKeyUp("z")) { fire = false; }
 		if (fire) shoot();
 
-		if(Input.GetKey("x")) { makeBomb(); }
+		if(Input.GetKeyDown("x")) { makeBomb(); }
 
 		if (Input.GetKey("up")) { numOfDirections++; }
 		else if (Input.GetKey("down")) { numOfDirections++; }
@@ -125,7 +125,8 @@ public class Player : MonoBehaviour {
 
 	void onHit(){
 		//clears bullets and respawns
-		transform.position = new Vector2(-2,0);
+		makeBomb();
+		transform.position = new Vector2(-2,-3);
 	}
 
 	void move(dir direction) {

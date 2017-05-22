@@ -40,10 +40,25 @@ public class Suwako : MonoBehaviour {
 				}
 			}
 		}
+		if(phase == 1)
+		{
+			if(timer > 0.2)
+			{
+				timer = 0;
+				for(int i = 0; i < 8; i++)
+				{
+					Transform b = Instantiate(suwabullet);
+					Bullet bs = b.GetComponent<Bullet>();
+					b.position = transform.position;
+					bs.setDirection(Random.value * 360.0f);
+				}
+			}
+		}
 	}
 
 	void BossDead()
 	{
 		phase = 1;
+		transform.position = new Vector2(-2, 0);
 	}
 }
