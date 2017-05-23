@@ -15,4 +15,9 @@ public class Helper : MonoBehaviour {
 	{
 
 	}
+
+	public void cutscene()
+	{
+
+	}
 }

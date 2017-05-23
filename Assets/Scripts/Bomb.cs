@@ -5,20 +5,20 @@ using UnityEngine;
 public class Bomb : MonoBehaviour {
 
 	// Use this for initialization
+	float timer = 0.0f;
 
 	void Start () {
-		StartCoroutine(delete());
-	}
 
-	IEnumerator delete()
-	{
-		yield return new WaitForSeconds(0.1f);
-		Destroy(gameObject);
 	}
 
 	// Update is called once per frame
 	void Update () {
-
+		timer += Time.deltaTime;
+		transform.localScale = new Vector2(timer*50, timer*50);
+		if(timer > 0.4)
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {

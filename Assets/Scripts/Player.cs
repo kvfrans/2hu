@@ -3,17 +3,20 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public float speed = 4;
-	public bool shift = false;
-	public bool fire = false;
-	public int numOfDirections = 0;
-	public float bounds = 3;
-	public float timer = 0.0f;
-	public float fireSpeedIncrement = 0.02f;
-	public float lives = 3;
+	// movement + shooting
+	float speed = 4;
+	bool shift = false;
+	bool fire = false;
+	int numOfDirections = 0;
+	float bounds = 3;
+	float timer = 0.0f;
+	float fireSpeedIncrement = 0.02f;
 
-	public Vector2 direction_vector;
+	float invincibleTimer = 0.0f;
 
+	Vector2 direction_vector;
+
+	// Prefab references
 	public Transform playerbullet;
 	public Transform bomb;
 
@@ -21,6 +24,7 @@ public class Player : MonoBehaviour {
 
 	public float score = 0;
 	public float graze = 0;
+	public float lives = 3;
 
 
 	// Use this for initialization
@@ -59,6 +63,11 @@ public class Player : MonoBehaviour {
 		else if (Input.GetKey("down")) { move(dir.DOWN); }
 		if (Input.GetKey("left")) { move(dir.LEFT); }
 		else if (Input.GetKey("right")) { move(dir.RIGHT); }
+
+		if(invincibleTimer > 0.0f)
+		{
+			invincibleTimer -= Time.deltaTime;
+		}
 
 	}
 
@@ -125,8 +134,14 @@ public class Player : MonoBehaviour {
 
 	void onHit(){
 		//clears bullets and respawns
-		makeBomb();
-		transform.position = new Vector2(-2,-3);
+		if(invincibleTimer <= 0.0f)
+		{
+			makeBomb();
+			graze--;
+			lives--;
+			transform.position = new Vector2(-2,-3);
+			invincibleTimer = 1.0f;
+		}
 	}
 
 	void move(dir direction) {
@@ -166,8 +181,6 @@ public class Player : MonoBehaviour {
         	if(b.type == Bullet.bullet_type.ENEMY)
         	{
         		b.HitPlayer();
-				graze--;
-				lives--;
 				onHit();
         	}
         }
