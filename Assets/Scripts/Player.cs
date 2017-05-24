@@ -38,31 +38,31 @@ public class Player : MonoBehaviour {
 		numOfDirections = 0;
 
 		// movement logic
-		if (Input.GetKeyDown("left shift")) {
+		if (Input.GetKeyDown(Helper.Instance.keybinds["shift"])) {
 			shift = true;
 		}
-		if (Input.GetKeyUp("left shift")) {
+		if (Input.GetKeyUp(Helper.Instance.keybinds["shift"])) {
 			shift = false;
 		}
 
 		//checks directions
 
-		if (Input.GetKeyDown("z")) { fire = true; }
-		if (Input.GetKeyUp("z")) { fire = false; }
+		if (Input.GetKeyDown(Helper.Instance.keybinds["shoot"])) { fire = true; }
+		if (Input.GetKeyUp(Helper.Instance.keybinds["shoot"])) { fire = false; }
 		if (fire) shoot();
 
-		if(Input.GetKeyDown("x")) { makeBomb(); }
+		if(Input.GetKeyDown(Helper.Instance.keybinds["bomb"])) { makeBomb(); }
 
-		if (Input.GetKey("up")) { numOfDirections++; }
-		else if (Input.GetKey("down")) { numOfDirections++; }
-		if (Input.GetKey("left")) { numOfDirections++; }
-		else if (Input.GetKey("right")) { numOfDirections++; }
+		if (Input.GetKey(Helper.Instance.keybinds["up"])) { numOfDirections++; }
+		else if (Input.GetKey(Helper.Instance.keybinds["down"])) { numOfDirections++; }
+		if (Input.GetKey(Helper.Instance.keybinds["left"])) { numOfDirections++; }
+		else if (Input.GetKey(Helper.Instance.keybinds["right"])) { numOfDirections++; }
 
 		//moves
-		if (Input.GetKey("up")) { move(dir.UP); }
-		else if (Input.GetKey("down")) { move(dir.DOWN); }
-		if (Input.GetKey("left")) { move(dir.LEFT); }
-		else if (Input.GetKey("right")) { move(dir.RIGHT); }
+		if (Input.GetKey(Helper.Instance.keybinds["up"])) { move(dir.UP); }
+		else if (Input.GetKey(Helper.Instance.keybinds["down"])) { move(dir.DOWN); }
+		if (Input.GetKey(Helper.Instance.keybinds["left"])) { move(dir.LEFT); }
+		else if (Input.GetKey(Helper.Instance.keybinds["right"])) { move(dir.RIGHT); }
 
 		if(invincibleTimer > 0.0f)
 		{
@@ -73,10 +73,10 @@ public class Player : MonoBehaviour {
 
 	void checkAlive() {
 
-		if (Input.GetKey("up")) move(dir.UP);
-		else if (Input.GetKey("down")) move(dir.DOWN);
-		if (Input.GetKey("left")) move(dir.LEFT);
-		else if (Input.GetKey("right")) move(dir.RIGHT);
+		if (Input.GetKey(Helper.Instance.keybinds["up"])) move(dir.UP);
+		else if (Input.GetKey(Helper.Instance.keybinds["down"])) move(dir.DOWN);
+		if (Input.GetKey(Helper.Instance.keybinds["left"])) move(dir.LEFT);
+		else if (Input.GetKey(Helper.Instance.keybinds["right"])) move(dir.RIGHT);
 
 	}
 
@@ -154,19 +154,19 @@ public class Player : MonoBehaviour {
 
 		if(direction == dir.UP) {
 			direction_vector = new Vector2(0, 1);
-			transform.Translate(direction_vector*speed*Time.deltaTime*Helper.Instance.gameSpeed);
+			transform.Translate(direction_vector*speed*Time.deltaTime);
 		}
 		else if(direction == dir.DOWN) {
 			direction_vector = new Vector2(0, -1);
-			transform.Translate(direction_vector*speed*Time.deltaTime*Helper.Instance.gameSpeed);
+			transform.Translate(direction_vector*speed*Time.deltaTime);
 		}
 		if(direction == dir.LEFT) {
 			direction_vector = new Vector2(-1, 0);
-			transform.Translate(direction_vector*speed*Time.deltaTime*Helper.Instance.gameSpeed);
+			transform.Translate(direction_vector*speed*Time.deltaTime);
 		}
 		else if(direction == dir.RIGHT) {
 			direction_vector = new Vector2(1, 0);
-			transform.Translate(direction_vector*speed*Time.deltaTime*Helper.Instance.gameSpeed);
+			transform.Translate(direction_vector*speed*Time.deltaTime);
 		}
 
 		checkBounds();

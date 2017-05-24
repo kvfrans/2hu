@@ -11,6 +11,15 @@ public class Helper : MonoBehaviour {
 
 	// public vars
 	public float gameSpeed = 1.0f;
+	public IDictionary<string, string> keybinds = new Dictionary<string, string>(){
+                                                                {"up","up"},
+                                                                {"down", "down"},
+                                                                {"left", "left"},
+																{"right", "right"},
+																{"shift", "left shift"},
+																{"shoot", "z"},
+																{"bomb", "x"}
+                                                            };
 
 	void Awake()
 	{
