@@ -6,8 +6,8 @@ public class Suwako : MonoBehaviour {
 
 	// private vars
 	float timer = 0;
-	int phase = 0;
-
+	enum phases { uno, dos, tres };
+	phases phase = phases.uno;
 	// phase 1 stuff
 	float rotation = 0;
 	float rateofchange = 0;
@@ -23,42 +23,43 @@ public class Suwako : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timer += Time.deltaTime;
-
-		if(phase == 0)
-		{
-			if(timer > 0.6)
-			{
-				rotation += rateofchange;
-				rateofchange += Random.value * 2 - 1;
-				timer = 0;
-				for(int i = 0; i < 36; i++)
+		switch (phase) {
+			case phases.uno:
+				if(timer > 0.6)
 				{
-					Transform b = Instantiate(suwabullet);
-					Bullet bs = b.GetComponent<Bullet>();
-					b.position = transform.position;
-					bs.setDirection(i*10 + rotation);
+					rotation += rateofchange;
+					rateofchange += Random.value * 2 - 1;
+					timer = 0;
+					for(int i = 0; i < 36; i++)
+					{
+						Transform b = Instantiate(suwabullet);
+						Bullet bs = b.GetComponent<Bullet>();
+						b.position = transform.position;
+						bs.setDirection(i*10 + rotation);
+					}
 				}
-			}
-		}
-		if(phase == 1)
-		{
-			if(timer > 0.2)
-			{
-				timer = 0;
-				for(int i = 0; i < 8; i++)
+				break;
+			case phases.dos:
+				if(timer > 0.2)
 				{
-					Transform b = Instantiate(suwabullet);
-					Bullet bs = b.GetComponent<Bullet>();
-					b.position = transform.position;
-					bs.setDirection(Random.value * 360.0f);
+					timer = 0;
+					for(int i = 0; i < 8; i++)
+					{
+						Transform b = Instantiate(suwabullet);
+						Bullet bs = b.GetComponent<Bullet>();
+						b.position = transform.position;
+						bs.setDirection(Random.value * 360.0f);
+					}
 				}
-			}
+				break;
+			case phases.tres:
+				break;
 		}
 	}
 
 	void BossDead()
 	{
-		phase = 1;
+		phase = phases.dos;
 		transform.position = new Vector2(-2, 0);
 	}
 }
