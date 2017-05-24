@@ -17,6 +17,10 @@ public class Cutscene : MonoBehaviour {
 
 	float timer = 0.0f;
 
+	// Sprite references
+	public Sprite nitori;
+	public Sprite cirno;
+
 	// Use this for initialization
 	void Start () {
 
@@ -27,7 +31,7 @@ public class Cutscene : MonoBehaviour {
 	{
 		if(charadjust < message.Length)
 		{
-			timer += Time.deltaTime;
+			timer += Helper.Instance.globalDeltaTime();
 			if(timer > 0.003f)
 			{
 				timer = 0.0f;
@@ -57,5 +61,18 @@ public class Cutscene : MonoBehaviour {
 		message = message_in;
 		name.GetComponent<Text>().text = charname;
 		dialogue.GetComponent<Text>().text = "";
+
+		Sprite spriteimg = nitori;
+		switch(picname)
+		{
+			case "nitori":
+				spriteimg = nitori;
+				break;
+			case "cirno":
+				spriteimg = cirno;
+				break;
+
+		}
+		pic.GetComponent<SpriteRenderer>().sprite = spriteimg;
 	}
 }

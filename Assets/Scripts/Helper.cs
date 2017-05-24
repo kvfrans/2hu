@@ -11,6 +11,15 @@ public class Helper : MonoBehaviour {
 
 	// public vars
 	public float gameSpeed = 1.0f;
+	public IDictionary<string, string> keybinds = new Dictionary<string, string>(){
+                                                                {"up","up"},
+                                                                {"down", "down"},
+                                                                {"left", "left"},
+																{"right", "right"},
+																{"shift", "left shift"},
+																{"shoot", "z"},
+																{"bomb", "x"}
+                                                            };
 
 	void Awake()
 	{
@@ -37,5 +46,15 @@ public class Helper : MonoBehaviour {
 	public void resumeGame()
 	{
 		gameSpeed = 1.0f;
+	}
+
+	public float gameplayDeltaTime()
+	{
+		return Time.deltaTime * gameSpeed;
+	}
+
+	public float globalDeltaTime()
+	{
+		return Time.deltaTime;
 	}
 }
