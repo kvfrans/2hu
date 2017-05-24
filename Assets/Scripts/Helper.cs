@@ -9,6 +9,9 @@ public class Helper : MonoBehaviour {
 	// Prefab references
 	public Transform cutscene;
 
+	// public vars
+	public float gameSpeed = 1.0f;
+
 	void Awake()
 	{
 		Instance = this;
@@ -24,5 +27,15 @@ public class Helper : MonoBehaviour {
 		Transform c = Instantiate(cutscene);
 		c.position = new Vector3(-1.78f, -3.07f, -1f);
 		c.GetComponent<Cutscene>().startCutscene(picname, charname, message);
+	}
+
+	public void pauseGame()
+	{
+		gameSpeed = 0.0f;
+	}
+
+	public void resumeGame()
+	{
+		gameSpeed = 1.0f;
 	}
 }

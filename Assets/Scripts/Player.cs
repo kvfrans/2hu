@@ -154,19 +154,19 @@ public class Player : MonoBehaviour {
 
 		if(direction == dir.UP) {
 			direction_vector = new Vector2(0, 1);
-			transform.Translate(direction_vector*speed*Time.deltaTime);
+			transform.Translate(direction_vector*speed*Time.deltaTime*Helper.Instance.gameSpeed);
 		}
 		else if(direction == dir.DOWN) {
 			direction_vector = new Vector2(0, -1);
-			transform.Translate(direction_vector*speed*Time.deltaTime);
+			transform.Translate(direction_vector*speed*Time.deltaTime*Helper.Instance.gameSpeed);
 		}
 		if(direction == dir.LEFT) {
 			direction_vector = new Vector2(-1, 0);
-			transform.Translate(direction_vector*speed*Time.deltaTime);
+			transform.Translate(direction_vector*speed*Time.deltaTime*Helper.Instance.gameSpeed);
 		}
 		else if(direction == dir.RIGHT) {
 			direction_vector = new Vector2(1, 0);
-			transform.Translate(direction_vector*speed*Time.deltaTime);
+			transform.Translate(direction_vector*speed*Time.deltaTime*Helper.Instance.gameSpeed);
 		}
 
 		checkBounds();

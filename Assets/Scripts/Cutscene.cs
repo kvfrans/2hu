@@ -28,17 +28,32 @@ public class Cutscene : MonoBehaviour {
 		if(charadjust < message.Length)
 		{
 			timer += Time.deltaTime;
-			if(timer > 0.02f)
+			if(timer > 0.003f)
 			{
 				timer = 0.0f;
 				charadjust++;
 			}
 			dialogue.GetComponent<Text>().text = message.Substring(0, charadjust);
 		}
+
+		if(Input.GetKeyDown("z"))
+		{
+			if(charadjust < message.Length)
+			{
+				charadjust = message.Length;
+				dialogue.GetComponent<Text>().text = message;
+			}
+			else
+			{
+				Helper.Instance.resumeGame();
+				Destroy(gameObject);
+			}
+		}
 	}
 
 	public void startCutscene(string picname, string charname, string message_in)
 	{
+		Helper.Instance.pauseGame();
 		message = message_in;
 		name.GetComponent<Text>().text = charname;
 		dialogue.GetComponent<Text>().text = "";
