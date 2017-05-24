@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		transform.Translate(direction_vector*speed*Time.deltaTime*Helper.Instance.gameSpeed);
+		transform.Translate(direction_vector * speed * Helper.Instance.gameplayDeltaTime());
 	}
 
 	void OnBecameInvisible() {

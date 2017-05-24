@@ -66,7 +66,7 @@ public class Player : MonoBehaviour {
 
 		if(invincibleTimer > 0.0f)
 		{
-			invincibleTimer -= Time.deltaTime;
+			invincibleTimer -= Helper.Instance.gameplayDeltaTime();
 		}
 
 	}
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour {
 
 	void shoot(){
 
-		timer += Time.deltaTime;
+		timer += Helper.Instance.gameplayDeltaTime();
 
 		if(timer > 0.2f) {
 			timer = 0;
@@ -154,19 +154,19 @@ public class Player : MonoBehaviour {
 
 		if(direction == dir.UP) {
 			direction_vector = new Vector2(0, 1);
-			transform.Translate(direction_vector*speed*Time.deltaTime);
+			transform.Translate(direction_vector*speed*Helper.Instance.gameplayDeltaTime()*Helper.Instance.gameSpeed);
 		}
 		else if(direction == dir.DOWN) {
 			direction_vector = new Vector2(0, -1);
-			transform.Translate(direction_vector*speed*Time.deltaTime);
+			transform.Translate(direction_vector*speed*Helper.Instance.gameplayDeltaTime()*Helper.Instance.gameSpeed);
 		}
 		if(direction == dir.LEFT) {
 			direction_vector = new Vector2(-1, 0);
-			transform.Translate(direction_vector*speed*Time.deltaTime);
+			transform.Translate(direction_vector*speed*Helper.Instance.gameplayDeltaTime()*Helper.Instance.gameSpeed);
 		}
 		else if(direction == dir.RIGHT) {
 			direction_vector = new Vector2(1, 0);
-			transform.Translate(direction_vector*speed*Time.deltaTime);
+			transform.Translate(direction_vector*speed*Helper.Instance.gameplayDeltaTime()*Helper.Instance.gameSpeed);
 		}
 
 		checkBounds();

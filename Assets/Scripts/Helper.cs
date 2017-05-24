@@ -47,4 +47,14 @@ public class Helper : MonoBehaviour {
 	{
 		gameSpeed = 1.0f;
 	}
+
+	public float gameplayDeltaTime()
+	{
+		return Time.deltaTime * gameSpeed;
+	}
+
+	public float globalDeltaTime()
+	{
+		return Time.deltaTime;
+	}
 }

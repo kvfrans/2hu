@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Suwako : MonoBehaviour {
+public class Cirno : MonoBehaviour {
 
 	// private vars
 	float timer = 0;
-	enum phases { uno, dos, tres };
-	phases phase = phases.uno;
+	enum phases { perfect_freeze_1, perfect_freeze_2, perfect_freeze_3 };
+	phases phase = phases.perfect_freeze_1;
 	// phase 1 stuff
 	float rotation = 0;
 	float rateofchange = 0;
 
 	// prefab references
-	public Transform suwabullet;
+	public Transform cirnobullet;
 
 	// Use this for initialization
 	void Start () {
@@ -24,42 +24,39 @@ public class Suwako : MonoBehaviour {
 	void Update () {
 		timer += Helper.Instance.gameplayDeltaTime();
 		switch (phase) {
-			case phases.uno:
+			case phases.perfect_freeze_1:
 				if(timer > 0.6)
 				{
-					rotation += rateofchange;
-					rateofchange += Random.value * 2 - 1;
-					timer = 0;
-					for(int i = 0; i < 36; i++)
-					{
-						Transform b = Instantiate(suwabullet);
-						Bullet bs = b.GetComponent<Bullet>();
-						b.position = transform.position;
-						bs.setDirection(i*10 + rotation);
-					}
-				}
-				break;
-			case phases.dos:
-				if(timer > 0.2)
-				{
-					timer = 0;
 					for(int i = 0; i < 8; i++)
 					{
-						Transform b = Instantiate(suwabullet);
+						Transform b = Instantiate(cirnobullet);
 						Bullet bs = b.GetComponent<Bullet>();
 						b.position = transform.position;
 						bs.setDirection(Random.value * 360.0f);
 					}
 				}
 				break;
-			case phases.tres:
+			case phases.perfect_freeze_2:
+				if(timer > 0.2)
+				{
+					timer = 0;
+					for(int i = 0; i < 8; i++)
+					{
+						Transform b = Instantiate(cirnobullet);
+						Bullet bs = b.GetComponent<Bullet>();
+						b.position = transform.position;
+						bs.setDirection(Random.value * 360.0f);
+					}
+				}
+				break;
+			case phases.perfect_freeze_3:
 				break;
 		}
 	}
 
 	void BossDead()
 	{
-		phase = phases.dos;
+		phase = phases.perfect_freeze_2;
 		transform.position = new Vector2(-2, 0);
 	}
 }
