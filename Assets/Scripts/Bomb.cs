@@ -13,7 +13,7 @@ public class Bomb : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		timer += Time.deltaTime;
+		timer += Helper.Instance.gameplayDeltaTime();
 		transform.localScale = new Vector2(timer*50, timer*50);
 		if(timer > 0.4)
 		{

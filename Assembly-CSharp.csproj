@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Bosses\Cirno\Cirno.cs" />
      <Compile Include="Assets\Bosses\Suwako\Suwako.cs" />
      <Compile Include="Assets\Scripts\Bomb.cs" />
      <Compile Include="Assets\Scripts\Boss.cs" />
