@@ -34,6 +34,8 @@ public class God : MonoBehaviour {
 		boss_tr.position = new Vector2(-2,3);
 		boss_script = boss_tr.GetComponent<Boss>();
 		boss_script.player = player_tr;
+
+		Helper.Instance.makeCutscene("nitori", "Nitori Kawashiro", "hmmmmmmmmmm if i take a look at my graphing calculator over here let me just say that i can clearly see that MARISA STOLE IT");
 	}
 
 	// Update is called once per frame
